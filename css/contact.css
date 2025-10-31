@@ -1,0 +1,306 @@
+body {
+    margin:0;
+    padding:0;
+    font-family: "Onest", serif;
+}
+
+.background img {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: -1;
+}
+
+.gmail {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fade 0.7s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.gmail img {
+    width: 55px;
+    height: 55px;
+}
+
+.gmail:hover img{
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0);}
+    50% {transform: translateY(-5px);}
+}
+
+.gmail p {
+    color: white;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.linkedin {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fade 0.7s ease forwards;
+    animation-delay: 0.5s;
+    text-decoration: none;
+}
+
+.linkedin img {
+    width: 50px;
+    height: 50px;
+}
+
+.linkedin:hover img {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0);}
+    50% {transform: translateY(-5px);}
+}
+
+.linkedin p {
+    color: white;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.ins {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fade 0.7s ease forwards;
+    animation-delay: 0.7s;
+    text-decoration: none;
+}
+
+.ins img {
+    width: 50px;
+    height: 50px;
+}
+
+.ins:hover img {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateY(0);}
+    50% {transform: translateY(-5px);}
+}
+
+.ins p {
+    color: white;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.contact-form {
+    position: absolute;
+    background-color: rgba(30, 169, 164, 0.2);
+    padding: 15px;
+    border-radius: 30px;
+    width:300px;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    color:white;
+    box-shadow: 0 1px 50px rgba(0,100,100,1);
+    text-align: center;
+    opacity: 0;
+    animation: fade 0.6s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.contact-form label {
+    display: inline-block;
+    padding: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 200px;
+    padding: 1px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.contact-form button {
+    width:100px;
+    padding: 1px;
+    margin-top: 15px;
+    background-color:white;
+    color:rgb(32, 129, 79);
+    border:none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size:15px;
+    display: inline-block;
+}
+
+.button-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    bottom: 100px;
+}
+
+.home-button, .contact-button, .projects-button {
+    font-family: "Onest", serif;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #ffffff;
+    padding: 8px 18px;
+    text-decoration: none;
+	display: inline-block;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 400;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.home-button {
+    animation: buttonFade 0.7s ease forwards;
+    animation-delay: 0.9s;
+}
+
+.projects-button {
+    animation: buttonFade 0.7s ease forwards;
+    animation-delay: 1.1s;
+}
+
+.contact-button {
+    animation: buttonFade 0.7s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-button:hover, .contact-button:hover, .projects-button:hover {
+    transform: scale(1.1);
+    letter-spacing: 2px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(33, 122, 122);
+    font-weight: 600;
+}
+
+.copyright {
+    position: absolute;
+    display: inline-block;
+    font-size: 13px;
+    color: #c9daea;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 25px;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transform: translate(-50%, 30px);
+    animation: copyrightFade 0.5s ease forwards;
+    animation-delay: 1.3s
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 30px));
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes buttonFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes copyrightFade {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        padding-bottom: 150px;
+    }
+    .gmail {
+        top: 80px;
+        position: absolute;
+    }
+    .linkedin {
+        top: 200px;
+        position: absolute;
+    }
+    .ins {
+        top: 320px;
+        position: absolute;
+    }
+    .button-container {
+        position: fixed;
+        bottom: 70px;
+    }
+    .contact-form {
+        top: 500px;
+        width: 80%;
+        max-width: 300px;
+        margin-top: 40px;
+    }
+    .home-button, .contact-button, .projects-button {
+        font-size: 17px;
+        padding: 8px 16px;
+    }
+    .gmail p, .linkedin p, .ins p {
+        font-size: 80%;
+    }
+    .copyright {
+       bottom: 20px;
+       font-size: 10px;
+       position: fixed;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        width: 90%;
+        padding: 10px;
+        top: 520px;
+        margin-top: 50px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 90%;
+    }
+}

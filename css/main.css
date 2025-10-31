@@ -1,0 +1,336 @@
+body {
+    margin:0;
+    padding:0;
+    overflow: auto;
+    width: 100%;
+    min-height: 100%;
+} 
+
+.background {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%,-50%);
+    object-fit: cover;
+}
+
+#intro {
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    color: white;
+    font-size: 2.2em;
+    font-weight: 200;
+    top: 30px;
+    width:100%;
+    z-index: 1;
+    font-family: "Pathway Gothic One", serif;
+    transition: all 0.3s ease-in-out;
+    animation-name: intro;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+}
+
+@keyframes intro {
+    0% {
+        transform: scale(1);
+        color: white;
+        letter-spacing: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #20457d;
+        letter-spacing: 3px;
+    }
+    100% {
+        transform: scale(1.2) scaleX(1.3);
+        color: #20457d;
+        font-weight: 900;
+        letter-spacing: 0;
+    }
+}
+
+.photo img {
+    display: block;
+    left: 10%;
+    top: 30px;
+    border-radius: 50%;
+    width: 175px;
+    height:190px;
+    z-index: 1;
+    transform: rotate(5deg);
+    opacity: 0;
+    animation: fade 0.8s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.photo img:hover {
+    content: url("images/avatar2.jpg");
+    transform: rotate(0deg);
+}
+
+.profile {
+    position: fixed;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
+    width: 100%;
+    top: 100px;
+}
+
+.info {
+    margin-left: 50px;
+    min-width: 500px;
+}
+
+.info h1 {
+    font-weight: lighter;
+    font-family: "Julius Sans One", serif;
+    color: rgb(230, 240, 250);
+    font-size: 40px;
+    opacity: 0;
+    animation: fade 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+.info p {
+    display: inline-block;
+    width: auto;
+    max-width: 500px;
+    color: rgb(239, 245, 250);
+    font-family: "Onest", serif;
+    font-size: 18px;
+    line-height:1.5;
+    margin-bottom:40px;
+    opacity: 0;
+    animation: fade 1s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+hr {
+    width: 100%;
+    transform-origin: left;
+    animation: line 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: 0.6s;
+    scale: 0 1;
+}
+
+@keyframes line {
+    from {
+        scale: 0 1;
+    }
+    to {
+        scale: 1 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        height: auto;
+        overflow: auto;
+    }
+    .profile {
+        position: relative;
+        flex-direction: column;
+        top: 100px;
+        margin-bottom: 120px;
+    }
+    .photo img {
+        margin: 20px auto;
+        width: 150px;
+        height: 150px;
+    }
+    #intro {
+        font-size: 2em;
+        justify-content: center;
+        text-align: center;
+    }
+    .info {
+        display: block;
+        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px;
+        width: 100%;
+        max-width: 640px;
+        min-width: auto;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .info h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+    .info p {
+        position: relative;
+        text-align: center;
+        left: auto;
+        transform: none;
+        width: 100%;
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 20px 0;
+    }
+    .button-container {
+        position: relative;
+        bottom: auto;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .copyright {
+        position: relative;
+        margin-top: 20px;
+        bottom: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .info p {
+        font-size: 15px;
+    }
+    hr {
+        width: 60%;
+    }
+    .home-button, .projects-button, .contact-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .copyright {
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+    .profile {
+        top: 80px;
+        margin-bottom: 100px;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    bottom: 60px;
+    width: 100%;
+    opacity: 0;
+    animation: fade 0.8s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.home-button, .projects-button, .contact-button {
+    color: #c1def7;
+    font-size: 20px;
+    font-family: "Onest", serif;
+    text-align: center;
+    border: 1px solid #c1def7;
+    padding: 8px 18px;
+    text-decoration: none;
+	display: inline-block;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 400;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.home-button {
+    animation: buttonFade 0.8s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.projects-button {
+    animation: buttonFade 0.8s ease forwards;
+    animation-delay: 1.6s;
+}
+
+.contact-button {
+    animation: buttonFade 0.8s ease forwards;
+    animation-delay: 1.4s;
+}
+
+.home-button:hover, .projects-button:hover, .contact-button:hover {
+    transform: scale(1.1);
+    letter-spacing: 2px;
+    border: none;
+    color: #c1def7;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+@keyframes buttonFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.copyright {
+    display: inline-block;
+    position: fixed;
+    font-size: 13px;
+    color: #c1def7;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    bottom: 1px;
+    width: 100%;
+    opacity: 0;
+    transform: translate(-50%, 30px);
+    animation: copyrightFade 0.8s ease forwards;
+    animation-delay: 1.4s;
+    font-family: "Onest", serif;
+}
+ 
+@keyframes copyrightFade {
+    from {
+        opacity: 0;
+        transform: translate(-50%,30px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%,0);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home-button, .projects-button,.contact-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .copyright {
+        font-size: 10px;
+    }
+}
