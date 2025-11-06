@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design</title>
+    <link rel="stylesheet" href="css/graphic.css">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="background">
+        <img src="images/beige background.webp" alt="background">
+    </section>
+
+    <header class="page-title">
+        <h1>Graphic Design</h1>
+    </header>
+
+    <main class="gallery">
+        <figure>
+            <img src="images/graphic.png" alt="graphic work">
+        </figure>
+        <figure>
+            <img src="images/graphic2.png" alt="graphic work 2">
+        </figure>
+        <figure>
+            <img src="images/graphic3.assignment.png" alt="graphic assignment 1">
+        </figure>
+        <figure>
+            <img src="images/graphic3.assignment2.png" alt="graphic assignment 2">
+        </figure>
+        <figure>
+            <img src="images/graphic4.png" alt="graphic work 4">
+        </figure>
+        <figure>
+            <img src="images/graphic4.1.png" alt="graphic work 4.1">
+        </figure>
+        <figure>
+            <img src="images/graphic5.png" alt="graphic work 5">
+        </figure>
+        <figure>
+            <img src="images/graphic5.1.png" alt="graphic work 5.1">
+        </figure>
+        <figure>
+            <img src="images/graphic6.png" alt="graphic work 6">
+        </figure>
+        <figure>
+            <img src="images/graphic7.png" alt="graphic work 7">
+        </figure>
+        <figure>
+            <img src="images/graphic8.jpg" alt="graphic work 8">
+        </figure>
+        <figure>
+            <img src="images/graphic9.jpg" alt="graphic work 9">
+        </figure>
+        <figure>
+            <img src="images/coffee table book.png" alt="coffee table book 1">
+        </figure>
+        <figure>
+            <img src="images/coffee table book2.png" alt="coffee table book 2">
+        </figure>
+    </main>
+
+    <section class="button-container">
+        <a href="index.html" class="home-button">Home</a>
+        <a href="contact.html" class="contact-button">Contact</a>
+        <a href="allprojects.html" class="projects-button">Projects</a>
+    </section>
+
+    <footer>
+        <p class="copyright">©2025 YUHONG. ALL RIGHT RESERVED</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var targets = [];
+            var figures = document.querySelectorAll('.gallery figure');
+            for (var i = 0; i < figures.length; i++) {
+                figures[i].classList.add('reveal-on-scroll');
+                targets.push(figures[i]);
+            }
+            var buttonContainer = document.querySelector('.button-container');
+            if (buttonContainer) {
+                buttonContainer.classList.add('reveal-on-scroll');
+                targets.push(buttonContainer);
+            }
+            var footer = document.querySelector('footer');
+            if (footer) {
+                footer.classList.add('reveal-on-scroll');
+                targets.push(footer);
+            }
+
+            var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced || !('IntersectionObserver' in window)) {
+                for (var j = 0; j < targets.length; j++) {
+                    targets[j].classList.add('in-view');
+                }
+                return;
+            }
+
+            var observer = new IntersectionObserver(function(entries, obs) {
+                for (var k = 0; k < entries.length; k++) {
+                    var entry = entries[k];
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        obs.unobserve(entry.target);
+                    }
+                }
+            }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+            for (var m = 0; m < targets.length; m++) {
+                observer.observe(targets[m]);
+            }
+        });
+    </script>
+    
+</body>
+
+</html>
+
