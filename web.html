@@ -12,15 +12,26 @@
 </head>
 
 <body>
+    <header class="site-nav" role="navigation" aria-label="Main">
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html" data-label="home">home</a></li>
+                <li><a href="contact.html" data-label="contact">contact</a></li>
+                <li class="has-dropdown">
+                    <a href="allprojects.html" aria-haspopup="true" aria-expanded="false" data-label="projects">projects</a>
+                    <div class="dropdown" role="menu">
+                        <a href="graphic.html" role="menuitem" data-label="Graphic Design">Graphic Design</a>
+                        <a href="ui.html" role="menuitem" data-label="UI Design">UI Design</a>
+                        <a href="web.html" role="menuitem" aria-current="page" data-label="Web Design">Web Design</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <header class="page-title">
         <h1>Web Design</h1>
     </header>
-
-    <section class="button-container">
-        <a href="index.html" class="home-button">Home</a>
-        <a href="contact.html" class="contact-button">Contact</a>
-        <a href="allprojects.html" class="projects-button">Projects</a>
-    </section>
+ 
 
     <main class="gallery">
         <figure>
@@ -28,6 +39,9 @@
         </figure>
         <figure>
             <img src="images/loopstyle2.png" alt="Web Design project Loopstyle 2">
+        </figure>
+        <figure>
+            <img src="images/loop3.png" alt="Web Design project Loopstyle 2">
         </figure>
     </main>
 

@@ -255,8 +255,41 @@ hr {
     transition: transform 0.3s ease, letter-spacing 0.3s ease;
     transform: translateY(30px);
     opacity: 0;
+    position: relative;
+    overflow: hidden;
+    /* show text via pseudo-elements to enable flip without size change */
+    color: transparent;
 }
 
+.home-button::before, .home-button::after,
+.projects-button::before, .projects-button::after,
+.contact-button::before, .contact-button::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #c1def7;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: inherit; /* keep original size */
+}
+
+.home-button::after, .projects-button::after, .contact-button::after {
+    transform: translate(-50%, 120%);
+    opacity: 0;
+}
+
+.home-button:hover::before, .projects-button:hover::before, .contact-button:hover::before {
+    transform: translate(-50%, -120%);
+    opacity: 0;
+}
+
+.home-button:hover::after, .projects-button:hover::after, .contact-button:hover::after {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
 .home-button {
     animation: buttonFade 0.8s ease forwards;
     animation-delay: 1.2s;
@@ -273,12 +306,10 @@ hr {
 }
 
 .home-button:hover, .projects-button:hover, .contact-button:hover {
-    transform: scale(1.1);
-    letter-spacing: 2px;
-    border: none;
-    color: #c1def7;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    transform: none;
+    letter-spacing: normal;
+    border: 1px solid #c1def7; /* keep size/shape identical */
+    transition: none;
 }
 
 @keyframes buttonFade {

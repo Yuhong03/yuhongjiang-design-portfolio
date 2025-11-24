@@ -175,8 +175,40 @@ body {
     transition: transform 0.3s ease, letter-spacing 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+    color: transparent; /* hide real text, keep width */
 }
 
+.home-button::before, .home-button::after,
+.projects-button::before, .projects-button::after,
+.contact-button::before, .contact-button::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: inherit; /* keep original size */
+}
+
+.home-button::after, .contact-button::after, .projects-button::after {
+    transform: translate(-50%, 120%);
+    opacity: 0;
+}
+
+.home-button:hover::before, .contact-button:hover::before, .projects-button:hover::before {
+    transform: translate(-50%, -120%);
+    opacity: 0;
+}
+
+.home-button:hover::after, .contact-button:hover::after, .projects-button:hover::after {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
 .home-button {
     animation: buttonFade 0.7s ease forwards;
     animation-delay: 0.9s;
@@ -193,12 +225,11 @@ body {
 }
 
 .home-button:hover, .contact-button:hover, .projects-button:hover {
-    transform: scale(1.1);
-    letter-spacing: 2px;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    color: rgb(33, 122, 122);
-    font-weight: 600;
+    transform: none;
+    letter-spacing: normal;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: transparent; /* keep real text hidden; pseudo shows text */
 }
 
 .copyright {
