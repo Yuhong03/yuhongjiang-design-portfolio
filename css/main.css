@@ -72,17 +72,12 @@ body {
     top: 30px;
     border-radius: 50%;
     width: 175px;
-    height:190px;
+    height: 175px;
+    object-fit: cover;
     z-index: 1;
-    transform: rotate(5deg);
     opacity: 0;
     animation: fade 0.8s ease forwards;
     animation-delay: 0.5s;
-}
-
-.photo img:hover {
-    content: url("images/avatar2.jpg");
-    transform: rotate(0deg);
 }
 
 .profile {
