@@ -307,6 +307,11 @@ hr {
         margin-top: 50px;
         margin-bottom: 30px;
     }
+
+    .button-container.top-nav {
+        margin-top: 28px;
+        margin-bottom: 10px;
+    }
     .copyright {
         position: relative;
         margin-top: 20px;
@@ -347,16 +352,21 @@ hr {
     margin: 60px 0 20px 0;
 }
 
+/* Home-only: nav between name and avatar */
+.button-container.top-nav {
+    margin: 40px 0 12px 0;
+    animation-delay: 1.05s;
+}
+
 .home-button, .projects-button, .contact-button {
     color: #c1def7;
     font-size: 20px;
     font-family: "Onest", serif;
     text-align: center;
-    border: 1px solid #c1def7;
+    border: none;
     padding: 8px 18px;
     text-decoration: none;
 	display: inline-block;
-    border-radius: 20px;
     margin: 0 10px;
     font-weight: 400;
     transition: transform 0.3s ease, letter-spacing 0.3s ease;
@@ -366,6 +376,15 @@ hr {
     overflow: hidden;
     /* show text via pseudo-elements to enable flip without size change */
     color: transparent;
+}
+
+/* Home-only: smaller buttons in the top nav */
+.button-container.top-nav .home-button,
+.button-container.top-nav .projects-button,
+.button-container.top-nav .contact-button {
+    font-size: 16px;
+    padding: 6px 14px;
+    margin: 0 8px;
 }
 
 .home-button::before, .home-button::after,
@@ -415,7 +434,6 @@ hr {
 .home-button:hover, .projects-button:hover, .contact-button:hover {
     transform: none;
     letter-spacing: normal;
-    border: 1px solid #c1def7; /* keep size/shape identical */
     transition: none;
 }
 

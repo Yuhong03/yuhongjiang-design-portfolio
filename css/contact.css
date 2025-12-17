@@ -2,6 +2,9 @@ body {
     margin:0;
     padding:0;
     font-family: "Onest", serif;
+    height: 100vh;
+    overflow: hidden; /* disable scrolling on contact page */
+    padding-bottom: 0;
 }
 
 .background img {
@@ -13,20 +16,82 @@ body {
     z-index: -1;
 }
 
-.gmail {
-    position: absolute;
-    top: 14%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.page-top {
+    position: relative;
+    z-index: 3;
+    padding: 44px 60px 0 60px;
+}
+
+.page-title {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.contact-stack {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 48px auto 0 auto; /* more space below nav */
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Top-to-bottom reveal order: title -> nav -> content -> footer */
+.page-title,
+.button-container.top-nav,
+.contact-stack > *,
+footer .copyright {
     opacity: 0;
-    animation: fade 0.7s ease forwards;
-    animation-delay: 0.3s;
+    transform: translateY(18px);
+    animation: revealUp 0.7s ease forwards;
+    will-change: transform, opacity;
+}
+
+.page-title { animation-delay: 0.25s; }
+.button-container.top-nav { animation-delay: 0.45s; }
+
+.contact-stack > * { animation-delay: calc(0.65s + (var(--i, 0) * 0.16s)); }
+.contact-stack > :nth-child(1) { --i: 0; }
+.contact-stack > :nth-child(2) { --i: 1; }
+.contact-stack > :nth-child(3) { --i: 2; }
+.contact-stack > :nth-child(4) { --i: 3; }
+
+footer .copyright { animation-delay: 1.45s; }
+
+.contact-stack .gmail,
+.contact-stack .linkedin,
+.contact-stack .ins {
+    transform: none; /* avoid old absolute-position transforms leaking in */
+}
+
+.contact-stack .linkedin,
+.contact-stack .ins {
+    display: block;
+    color: inherit;
+}
+
+.contact-stack .linkedin p,
+.contact-stack .ins p {
+    word-break: break-word;
+}
+
+.gmail {
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .gmail img {
-    width: 55px;
-    height: 55px;
+    width: 38px;
+    height: 38px;
 }
 
 .gmail:hover img{
@@ -45,20 +110,13 @@ body {
 }
 
 .linkedin {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
-    opacity: 0;
-    animation: fade 0.7s ease forwards;
-    animation-delay: 0.5s;
     text-decoration: none;
 }
 
 .linkedin img {
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
 }
 
 .linkedin:hover img {
@@ -77,20 +135,19 @@ body {
 }
 
 .ins {
-    position: absolute;
-    top: 47%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
-    opacity: 0;
-    animation: fade 0.7s ease forwards;
-    animation-delay: 0.7s;
     text-decoration: none;
 }
 
 .ins img {
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
+}
+
+.gmail p,
+.linkedin p,
+.ins p {
+    font-size: 14px;
 }
 
 .ins:hover img {
@@ -109,21 +166,15 @@ body {
 }
 
 .contact-form {
-    position: absolute;
     background-color: rgba(30, 169, 164, 0.2);
     padding: 15px;
     border-radius: 30px;
-    width:300px;
-    top: 65%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 300px;
     font-size: 15px;
     color:white;
     box-shadow: 0 1px 50px rgba(0,100,100,1);
     text-align: center;
-    opacity: 0;
-    animation: fade 0.6s ease forwards;
-    animation-delay: 0.8s;
+    margin-top: 26px; /* separate form from contact links */
 }
 
 .contact-form label {
@@ -153,11 +204,15 @@ body {
 }
 
 .button-container {
-    position: absolute;
     display: flex;
     justify-content: center;
     width: 100%;
-    bottom: 100px;
+}
+
+/* Match home: place the nav near the top area */
+.button-container.top-nav {
+    position: relative;
+    margin-top: 18px;
 }
 
 .home-button, .contact-button, .projects-button {
@@ -165,16 +220,12 @@ body {
     color: #ffffff;
     font-size: 20px;
     text-align: center;
-    border: 1px solid #ffffff;
     padding: 8px 18px;
     text-decoration: none;
 	display: inline-block;
-    border-radius: 20px;
     margin: 0 10px;
     font-weight: 400;
     transition: transform 0.3s ease, letter-spacing 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
     position: relative;
     overflow: hidden;
     color: transparent; /* hide real text, keep width */
@@ -209,60 +260,49 @@ body {
     transform: translate(-50%, -50%);
     opacity: 1;
 }
-.home-button {
-    animation: buttonFade 0.7s ease forwards;
-    animation-delay: 0.9s;
-}
-
-.projects-button {
-    animation: buttonFade 0.7s ease forwards;
-    animation-delay: 1.1s;
-}
-
-.contact-button {
-    animation: buttonFade 0.7s ease forwards;
-    animation-delay: 1s;
-}
-
 .home-button:hover, .contact-button:hover, .projects-button:hover {
     transform: none;
     letter-spacing: normal;
     background-color: transparent;
-    border: 1px solid #ffffff;
     color: transparent; /* keep real text hidden; pseudo shows text */
 }
 
+/* Match home: slightly smaller buttons in the top nav */
+.button-container.top-nav .home-button,
+.button-container.top-nav .contact-button,
+.button-container.top-nav .projects-button {
+    font-size: 16px;
+    padding: 6px 14px;
+    margin: 0 8px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px; /* match home spacing */
+    pointer-events: none;
+}
+
 .copyright {
-    position: absolute;
     display: inline-block;
+    position: relative;
     font-size: 13px;
     color: #c9daea;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    bottom: 25px;
     text-align: center;
-    width: 100%;
-    opacity: 0;
-    transform: translate(-50%, 30px);
-    animation: copyrightFade 0.5s ease forwards;
-    animation-delay: 1.3s
+    width: auto;
+    margin: 0;
+    pointer-events: none;
 }
 
-@keyframes fade {
+@keyframes revealUp {
     from {
         opacity: 0;
-        transform: translate(-50%, calc(-50% + 30px));
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes buttonFade {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(18px);
     }
     to {
         opacity: 1;
@@ -270,43 +310,21 @@ body {
     }
 }
 
-@keyframes copyrightFade {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 30px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
+/* (buttonFade removed on contact page: nav reveal is handled by the top-to-bottom sequence) */
 
 @media (max-width: 768px) {
-    body {
-        min-height: 100vh;
-        padding-bottom: 150px;
+    .page-top {
+        padding: 48px 24px 0 24px;
     }
-    .gmail {
-        top: 80px;
-        position: absolute;
+    .page-title {
+        font-size: 24px;
     }
-    .linkedin {
-        top: 200px;
-        position: absolute;
-    }
-    .ins {
-        top: 320px;
-        position: absolute;
-    }
-    .button-container {
-        position: fixed;
-        bottom: 70px;
+    .contact-stack {
+        margin-top: 26px;
+        gap: 22px;
     }
     .contact-form {
-        top: 500px;
-        width: 80%;
-        max-width: 300px;
-        margin-top: 40px;
+        width: min(340px, 92vw);
     }
     .home-button, .contact-button, .projects-button {
         font-size: 17px;
@@ -316,22 +334,34 @@ body {
         font-size: 80%;
     }
     .copyright {
-       bottom: 20px;
        font-size: 10px;
-       position: fixed;
+       margin-bottom: 0;
     }
+
+    footer { padding-bottom: 22px; }
 }
 
 @media (max-width: 480px) {
     .contact-form {
-        width: 90%;
         padding: 10px;
-        top: 520px;
-        margin-top: 50px;
     }
 
     .contact-form input,
     .contact-form textarea {
         width: 90%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-title,
+    .button-container.top-nav,
+    .contact-stack > *,
+    footer .copyright,
+    .home-button,
+    .contact-button,
+    .projects-button {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
