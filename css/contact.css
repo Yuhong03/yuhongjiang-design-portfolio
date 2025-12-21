@@ -2,9 +2,12 @@ body {
     margin:0;
     padding:0;
     font-family: "Onest", serif;
-    height: 100vh;
-    overflow: hidden; /* disable scrolling on contact page */
-    padding-bottom: 0;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto; /* allow scrolling when content is taller than viewport */
+    display: flex;
+    flex-direction: column;
 }
 
 .background img {
@@ -41,6 +44,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 18px;
+    flex: 1; /* push footer down when content is short */
 }
 
 /* Top-to-bottom reveal order: title -> nav -> content -> footer */
@@ -277,15 +281,10 @@ footer .copyright { animation-delay: 1.45s; }
 }
 
 footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 3;
     display: flex;
     justify-content: center;
-    padding-bottom: 30px; /* match home spacing */
-    pointer-events: none;
+    padding: 30px 0; /* match home spacing, but don't overlap content */
 }
 
 .copyright {
@@ -296,7 +295,6 @@ footer {
     text-align: center;
     width: auto;
     margin: 0;
-    pointer-events: none;
 }
 
 @keyframes revealUp {
@@ -338,7 +336,7 @@ footer {
        margin-bottom: 0;
     }
 
-    footer { padding-bottom: 22px; }
+    footer { padding: 22px 0; }
 }
 
 @media (max-width: 480px) {
