@@ -449,12 +449,12 @@ hr {
 
 .projects-button {
     animation: buttonFade 0.8s ease forwards;
-    animation-delay: 1.6s;
+    animation-delay: 1.4s;
 }
 
 .contact-button {
     animation: buttonFade 0.8s ease forwards;
-    animation-delay: 1.4s;
+    animation-delay: 1.6s;
 }
 
 .home-button:hover, .projects-button:hover, .contact-button:hover {

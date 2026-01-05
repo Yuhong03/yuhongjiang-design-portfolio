@@ -19,6 +19,17 @@ body {
     z-index: -1;
 }
 
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .page-top {
     position: relative;
     z-index: 3;
@@ -219,6 +230,20 @@ footer .copyright { animation-delay: 1.45s; }
     margin-top: 18px;
 }
 
+.button-container.top-nav .home-button,
+.button-container.top-nav .projects-button,
+.button-container.top-nav .contact-button {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.7s ease forwards;
+    /* keep the existing hover/flip effects */
+}
+
+/* left-to-right order: Home -> Projects -> Contact (match other pages) */
+.button-container.top-nav .home-button { animation-delay: 0.60s; }
+.button-container.top-nav .projects-button { animation-delay: 0.74s; }
+.button-container.top-nav .contact-button { animation-delay: 0.88s; }
+
 .home-button, .contact-button, .projects-button {
     font-family: "Onest", serif;
     color: #ffffff;
@@ -356,8 +381,8 @@ footer {
     .contact-stack > *,
     footer .copyright,
     .home-button,
-    .contact-button,
-    .projects-button {
+    .projects-button,
+    .contact-button {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;

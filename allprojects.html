@@ -25,31 +25,54 @@
         </video>
     </section>
 
-    <section class="title">
-        <p>Portfolio by Yuhong Jiang</p>
-    </section>
-
-    <section class="button-container top-nav">
-        <a href="index.html" class="home-button" data-label="Home">Home</a>
-        <a href="contact.html" class="contact-button" data-label="Contact">Contact</a>
-        <a href="allprojects.html" class="projects-button" data-label="Projects">Projects</a>
-    </section>
+    <header class="page-top" aria-label="Projects header">
+        <div class="page-heading">
+            <p class="kicker">Selected work</p>
+            <h1 class="page-title">Projects</h1>
+            <p class="page-subtitle">A focused selection across visual design, UI/UX, and front-end web.</p>
+        </div>
+        <nav class="button-container top-nav" aria-label="Primary">
+            <a href="index.html" class="home-button" data-label="Home">Home</a>
+            <a href="allprojects.html" class="projects-button" aria-current="page" data-label="Projects">Projects</a>
+            <a href="contact.html" class="contact-button" data-label="Contact">Contact</a>
+        </nav>
+    </header>
 
     <main class="content">
-        <section class="categories">
-            <a class="category-card" href="graphic.html">
-                <div class="card-inner" data-title="Visual Design">
-                    <h2>Visual Design</h2>
+        <section class="categories" aria-label="Project categories">
+            <a class="project-card" href="graphic.html">
+                <div class="project-card__inner">
+                    <h2 class="project-card__title">Visual Design</h2>
+                    <ul class="tags" aria-label="Visual design tags">
+                        <li>Branding</li>
+                        <li>Digital Design</li>
+                        <li>Social Media Content Creation</li>
+                    </ul>
+                    <span class="project-card__cta">View work</span>
                 </div>
             </a>
-            <a class="category-card" href="ui.html">
-                <div class="card-inner" data-title="UI Design">
-                    <h2>UI Design</h2>
+
+            <a class="project-card" href="ui.html">
+                <div class="project-card__inner">
+                    <h2 class="project-card__title">UI Design</h2>
+                    <ul class="tags" aria-label="UI design tags">
+                        <li>UX flows</li>
+                        <li>Prototyping</li>
+                        <li>Design systems</li>
+                    </ul>
+                    <span class="project-card__cta">View work</span>
                 </div>
             </a>
-            <a class="category-card" href="web.html">
-                <div class="card-inner" data-title="Web Design">
-                    <h2>Web Design</h2>
+
+            <a class="project-card" href="web.html">
+                <div class="project-card__inner">
+                    <h2 class="project-card__title">Web Design</h2>
+                    <ul class="tags" aria-label="Web design tags">
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>Web Development</li>
+                    </ul>
+                    <span class="project-card__cta">View work</span>
                 </div>
             </a>
         </section>
